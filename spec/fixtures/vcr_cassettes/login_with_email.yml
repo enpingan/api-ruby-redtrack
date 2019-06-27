@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.redtrack.io/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"good@good.com","password":"12345678"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.4.0 x86_64) ruby/2.4.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '76'
+      Host:
+      - api.redtrack.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, pre-check=0, post-check=0, max-age=0, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 01 Jul 2017 17:15:40 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Redtrack-Portal/1.0
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '127'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "token" : "JgiGYE0xryYCqmH4RnvdNK9rwrGmeQge",
+          "expirationTimestamp" : "2017-07-01T21:15:41.253Z",
+          "inaugural" : false
+        }
+    http_version:
+  recorded_at: Sat, 01 Jul 2017 17:15:41 GMT
+recorded_with: VCR 3.0.3

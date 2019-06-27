@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.redtrack.io/auth
+    body:
+      encoding: UTF-8
+      string: '{"email":"bad@bad.com","password":"badbadbad"}'
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.4.0 x86_64) ruby/2.4.0p0
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '46'
+      Host:
+      - api.redtrack.io
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Cache-Control:
+      - no-cache, no-store, pre-check=0, post-check=0, max-age=0, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 01 Jul 2017 17:16:34 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Redtrack-Portal/1.0
+      Strict-Transport-Security:
+      - max-age=2592000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "error" : {
+            "code" : "BAD_CREDENTIALS",
+            "description" : "",
+            "messages" : [ ],
+            "webRequestId" : "req-aYOTc6MKI7LPgYzLQiJm",
+            "time" : "2017-07-01T17:16:35.424+0000"
+          },
+          "typeName" : "badCredentials",
+          "typeCode" : [ 401, 0 ],
+          "status" : "UNAUTHORIZED"
+        }
+    http_version: 
+  recorded_at: Sat, 01 Jul 2017 17:16:35 GMT
+recorded_with: VCR 3.0.3
