@@ -3,11 +3,13 @@ module RubyRedtrack
     HANDLED_ENTITIES = %w(campaign lander offer traffic-source affiliate-network).freeze
 
     def initialize(connection)
+      binding.pry
       raise "#{entity_name} is not suppoted" unless HANDLED_ENTITIES.include?(entity_name)
       @connection = connection
     end
 
     def all(params = {})
+      binding.pry
       unless @connection.get(entity_name, params).blank?
         @connection.get(entity_name, params).values.first
       else
