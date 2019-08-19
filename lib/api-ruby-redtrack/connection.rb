@@ -5,7 +5,7 @@ module RubyRedtrack
     def initialize(login = nil, password = nil, api_key = nil)
       @login     = login
       @password  = password
-      @api_key     = api_key
+      @api_key   = api_key
       # Redtrack api_key lives 4 hours after last used. Suppose it was used
       # recently to give it a try. If it's not valid anymore, the script
       # get a new one in authenticate! method.
@@ -30,11 +30,12 @@ module RubyRedtrack
 
     def authenticate!
       response = request(
-        :post, 'auth',
-        login: @login, password: @password
+        :get, 'auth',
+        api_key: @api_key
       )
       binding.pry
-      @api_key   = response['api_key']
+      @login    = response['email']
+      @password = response['password']
       @expire_at = Time.parse(response['expirationTimestamp'])
     end
 
@@ -74,8 +75,9 @@ module RubyRedtrack
 
     def headers(query = {})
       headers = {
-        'content-type' => 'multipart/form-data',
-        'cwauth-api_key' => @api_key
+        params: {
+          api_key: @api_key
+        }
       }
       headers['params'] = query if query.any?
       headers
