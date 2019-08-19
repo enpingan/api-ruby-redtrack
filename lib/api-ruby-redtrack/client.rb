@@ -7,16 +7,16 @@ module RubyRedtrack
       @connection = Connection.new(login, password, token)
     end
 
-    def campaign
-      Campaign.new(@connection)
+    def campaigns
+      Campaigns.new(@connection)
     end
 
-    def lander
-      Lander.new(@connection)
+    def landers
+      Landers.new(@connection)
     end
 
-    def offer
-      Offer.new(@connection)
+    def offers
+      Offers.new(@connection)
     end
 
     def traffic_source
