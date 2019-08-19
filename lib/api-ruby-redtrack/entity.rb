@@ -8,6 +8,7 @@ module RubyRedtrack
     end
 
     def all(params = {})
+      binding.pry
       @connection.get(entity_name, params).values.first
     end
 
