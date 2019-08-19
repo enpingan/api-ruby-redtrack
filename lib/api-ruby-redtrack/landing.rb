@@ -1,4 +1,4 @@
 module RubyRedtrack
-  class Landing < Entity
+  class Landings < Entity
   end
 end

@@ -1,4 +1,4 @@
 module RubyRedtrack
-  class Offer < Entity
+  class Offers < Entity
   end
 end

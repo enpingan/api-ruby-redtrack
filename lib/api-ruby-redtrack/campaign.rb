@@ -1,4 +1,4 @@
 module RubyRedtrack
-  class Campaign < Entity
+  class Campaigns < Entity
   end
 end

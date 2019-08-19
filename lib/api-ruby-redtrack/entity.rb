@@ -1,6 +1,6 @@
 module RubyRedtrack
   class Entity
-    HANDLED_ENTITIES = %w(campaign lander offer traffic-source affiliate-network).freeze
+    HANDLED_ENTITIES = %w(campaigns landings offers sources domains networks tracks conversions report transactions).freeze
 
     def initialize(connection)
       raise "#{entity_name} is not suppoted" unless HANDLED_ENTITIES.include?(entity_name)
