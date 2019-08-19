@@ -33,7 +33,6 @@ module RubyRedtrack
         :get, 'auth',
         api_key: @api_key
       )
-      binding.pry
       @login    = response['email']
       @password = response['password']
       @expire_at = Time.parse(response['expirationTimestamp'])
@@ -56,7 +55,6 @@ module RubyRedtrack
     end
 
     def request(method, url, payload = {}, query = {})
-      binding.pry
       JSON.parse(
         RestClient::Request.execute(
           url:     "#{API_URL}/#{url}",

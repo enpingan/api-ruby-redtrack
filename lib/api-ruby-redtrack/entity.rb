@@ -8,11 +8,7 @@ module RubyRedtrack
     end
 
     def all(params = {})
-      unless @connection.get(entity_name, params).blank?
-        @connection.get(entity_name, params).values.first
-      else
-        "Wrong connection with the current api key"
-      end
+      @connection.get(entity_name, params).values.first
     end
 
     def find(id:)
