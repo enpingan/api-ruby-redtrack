@@ -55,6 +55,7 @@ module RubyRedtrack
     end
 
     def request(method, url, payload = {}, query = {})
+      binding.pry
       JSON.parse(
         RestClient::Request.execute(
           url:     "#{API_URL}/#{url}",
