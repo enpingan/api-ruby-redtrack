@@ -8,7 +8,7 @@ module RubyRedtrack
     end
 
     def all(params = {})
-      @connection.get(entity_name, params).values.first
+      @connection.get(entity_name, params)
     end
 
     def find(id:)
