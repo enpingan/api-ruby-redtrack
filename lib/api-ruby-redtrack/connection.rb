@@ -30,7 +30,7 @@ module RubyRedtrack
 
     def authenticate!
       response = request(
-        :post, 'auth/session',
+        :post, 'auth',
         email: @email, password: @password
       )
       binding.pry
@@ -73,7 +73,7 @@ module RubyRedtrack
 
     def headers(query = {})
       headers = {
-        'content-type' => 'application/json',
+        'content-type' => 'multipart/form-data',
         'cwauth-api_key' => @api_key
       }
       headers['params'] = query if query.any?
