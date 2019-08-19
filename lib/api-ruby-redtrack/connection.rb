@@ -33,6 +33,7 @@ module RubyRedtrack
         :post, 'auth',
         login: @login, password: @password
       )
+      binding.pry
       @api_key   = response['api_key']
       @expire_at = Time.parse(response['expirationTimestamp'])
     end
