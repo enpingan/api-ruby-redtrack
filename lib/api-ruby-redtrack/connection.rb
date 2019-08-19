@@ -33,7 +33,8 @@ module RubyRedtrack
         :post, 'auth/session',
         email: @email, password: @password
       )
-      @api_key     = response['api_key']
+      puts response
+      @api_key   = response['api_key']
       @expire_at = Time.parse(response['expirationTimestamp'])
     end
 
@@ -63,6 +64,7 @@ module RubyRedtrack
         ) do |response, request, result|
           Logger.log(response, request, result)
           raise RestClient::Unauthorized if result.code_type == Net::HTTPUnauthorized
+          puts response
           response
         end
       )
