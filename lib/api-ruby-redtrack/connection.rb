@@ -1,15 +1,15 @@
 module RubyRedtrack
   class Connection
-    attr_accessor :email, :token, :expire_at
+    attr_accessor :email, :api_key, :expire_at
 
-    def initialize(email = nil, password = nil, token = nil)
+    def initialize(email = nil, password = nil, api_key = nil)
       @email     = email
       @password  = password
-      @token     = token
-      # Redtrack token lives 4 hours after last used. Suppose it was used
+      @api_key     = api_key
+      # Redtrack api_key lives 4 hours after last used. Suppose it was used
       # recently to give it a try. If it's not valid anymore, the script
       # get a new one in authenticate! method.
-      @expire_at = @token ? (Time.now.utc + 4 * 86_400) : nil
+      @expire_at = @api_key ? (Time.now.utc + 4 * 86_400) : nil
     end
 
     def get(path, query = {})
@@ -33,12 +33,12 @@ module RubyRedtrack
         :post, 'auth/session',
         email: @email, password: @password
       )
-      @token     = response['token']
+      @api_key     = response['api_key']
       @expire_at = Time.parse(response['expirationTimestamp'])
     end
 
     def authenticated?
-      !@token.nil? && !@expire_at.nil? && @expire_at > Time.now.utc
+      !@api_key.nil? && !@expire_at.nil? && @expire_at > Time.now.utc
     end
 
     private
@@ -73,7 +73,7 @@ module RubyRedtrack
     def headers(query = {})
       headers = {
         'content-type' => 'application/json',
-        'cwauth-token' => @token
+        'cwauth-api_key' => @api_key
       }
       headers['params'] = query if query.any?
       headers
