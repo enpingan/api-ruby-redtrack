@@ -3,8 +3,8 @@ module RubyRedtrack
   class Client
     attr_reader :connection
 
-    def initialize(email: nil, password: nil, token: nil)
-      @connection = Connection.new(email, password, token)
+    def initialize(login: nil, password: nil, token: nil)
+      @connection = Connection.new(login, password, token)
     end
 
     def campaign

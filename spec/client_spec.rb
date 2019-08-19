@@ -1,7 +1,7 @@
 RSpec.describe RubyRedtrack::Client do
   let(:client) do
     VCR.use_cassette('login_with_email') do
-      RubyRedtrack::Client.new(email: 'good@good.com', password: '12345678')
+      RubyRedtrack::Client.new(login: 'good@good.com', password: '12345678')
     end
   end
 

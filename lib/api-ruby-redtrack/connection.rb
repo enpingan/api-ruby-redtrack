@@ -1,9 +1,9 @@
 module RubyRedtrack
   class Connection
-    attr_accessor :email, :api_key, :expire_at
+    attr_accessor :login, :api_key, :expire_at
 
-    def initialize(email = nil, password = nil, api_key = nil)
-      @email     = email
+    def initialize(login = nil, password = nil, api_key = nil)
+      @login     = login
       @password  = password
       @api_key     = api_key
       # Redtrack api_key lives 4 hours after last used. Suppose it was used
@@ -31,9 +31,8 @@ module RubyRedtrack
     def authenticate!
       response = request(
         :post, 'auth',
-        email: @email, password: @password
+        login: @login, password: @password
       )
-      binding.pry
       @api_key   = response['api_key']
       @expire_at = Time.parse(response['expirationTimestamp'])
     end
@@ -59,7 +58,7 @@ module RubyRedtrack
         RestClient::Request.execute(
           url:     "#{API_URL}/#{url}",
           method:  method,
-          payload: payload.to_json,
+          payload: payload,
           headers: headers(query)
         ) do |response, request, result|
           Logger.log(response, request, result)

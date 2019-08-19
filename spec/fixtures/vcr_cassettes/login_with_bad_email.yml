@@ -5,7 +5,7 @@ http_interactions:
     uri: http://api.redtrack.io/auth
     body:
       encoding: UTF-8
-      string: '{"email":"bad@bad.com","password":"badbadbad"}'
+      string: '{"login":"bad@bad.com","password":"badbadbad"}'
     headers:
       Accept:
       - "*/*"
